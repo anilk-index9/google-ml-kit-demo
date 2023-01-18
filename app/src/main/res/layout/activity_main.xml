@@ -10,40 +10,47 @@
         android:id="@+id/button"
         android:layout_width="277dp"
         android:layout_height="63dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="68dp"
         android:onClick="onGotoMainActivity"
         android:text="Goto Image Classification"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="277dp"
         android:layout_height="63dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginBottom="172dp"
         android:onClick="onGotoObjectDetection"
         android:text="Goto Object Detection"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="277dp"
         android:layout_height="63dp"
-        android:layout_marginTop="436dp"
+        android:layout_marginBottom="408dp"
         android:onClick="onGotoTextDetection"
         android:text="Goto Text Detection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="277dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="280dp"
+        android:onClick="onGotoCustomObjectDetection"
+        android:text="Custom Object Detection"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

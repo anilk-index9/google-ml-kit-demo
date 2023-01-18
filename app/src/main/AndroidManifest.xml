@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".image.ObjectDetectionActivity"/>
         <activity android:name=".image.TextDetectionActivity"/>
+        <activity android:name=".image.CustomObjectDetection"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

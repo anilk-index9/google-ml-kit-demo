@@ -32,7 +32,7 @@ public class ObjectDetectionActivity extends ImageHelperActivity {
                 new ObjectDetectorOptions.Builder()
                         .setDetectorMode(ObjectDetectorOptions.SINGLE_IMAGE_MODE)
                         .enableMultipleObjects()
-                        .enableClassification()  // Optional
+                        .enableClassification()
                         .build();
 
          objectDetector = ObjectDetection.getClient(options);
