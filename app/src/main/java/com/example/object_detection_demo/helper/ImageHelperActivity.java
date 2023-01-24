@@ -80,7 +80,7 @@ public class ImageHelperActivity extends AppCompatActivity {
     return file;
     }
 
-    protected Bitmap loadFromUri(Uri photoUri) {
+        protected Bitmap loadFromUri(Uri photoUri) {
         Bitmap image = null;
         try {
             if (Build.VERSION.SDK_INT > 27) {
@@ -103,9 +103,9 @@ public class ImageHelperActivity extends AppCompatActivity {
             if(requestCode == REQUEST_PICK_IMAGE){
                 Uri uri = data.getData();
                 Bitmap bitmap = loadFromUri(uri);
+
                 inputImageView.setImageBitmap(bitmap);
                 runClassifications(bitmap);
-
             }else if(requestCode == REQUEST_CAPTURE_IMAGE){
                 Log.d("ML","Received callback");
                 Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());

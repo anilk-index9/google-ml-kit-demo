@@ -18,15 +18,17 @@ import com.google.mlkit.vision.objects.ObjectDetector;
 import com.google.mlkit.vision.objects.custom.CustomObjectDetectorOptions;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class CustomObjectDetection extends ImageHelperActivity {
     private ObjectDetector objectDetector;
 
-    private LocalModel localModel =
+     LocalModel localModel =
             new LocalModel.Builder()
-                    .setAssetFilePath("detect.tflite")
+                    .setAssetFilePath("object_labeler.tflite")
                     .build();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,28 +49,32 @@ public class CustomObjectDetection extends ImageHelperActivity {
     @Override
     protected void runClassifications(Bitmap bitmap) {
         super.runClassifications(bitmap);
-        InputImage inputImage = InputImage.fromBitmap(bitmap, 0);
 
-        objectDetector
-                .process(inputImage)
+
+
+        InputImage inputImage = InputImage.fromBitmap(bitmap, 0);
+        Log.e("ML", "inputImage ###"+inputImage);
+
+        objectDetector.process(inputImage)
                 .addOnSuccessListener(new OnSuccessListener<List<DetectedObject>>() {
                     @Override
                     public void onSuccess(List<DetectedObject> detectedObjects) {
+                        Log.e("ML", "detectedObjects###"+detectedObjects);
                         StringBuilder builder = new StringBuilder();
                         if(!detectedObjects.isEmpty()){
-//                            List<BoxWithLabel> boxes = new ArrayList<>();
+                            List<BoxWithLabel> boxes = new ArrayList<>();
                             for(DetectedObject object: detectedObjects){
                                 Log.d("ObjectDetection","Object Detected"+detectedObjects);
                                 if(!object.getLabels().isEmpty()){
                                     String label = object.getLabels().get(0).getText();
                                     Float confidence = object.getLabels().get(0).getConfidence();
                                     builder.append(label).append(":").append(confidence).append("\n");
-//                                    boxes.add(new BoxWithLabel(object.getBoundingBox(), label));
+                                    boxes.add(new BoxWithLabel(object.getBoundingBox(), label));
                                     Log.d("ObjectDetection","Object Detected"+label);
                                 }
                             }
                             getOutputTextView().setText(builder.toString());
-//                            drawDetectionResult(boxes, bitmap);
+                            drawDetectionResult(boxes, bitmap);
                         }if (detectedObjects.isEmpty()) {
                             getOutputTextView().setText("Could not detect!!");
                         } else {
@@ -79,9 +85,9 @@ public class CustomObjectDetection extends ImageHelperActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Log.e("ML", "onFail ###"+e.getMessage());
                         e.printStackTrace();
                     }
                 });
-
     }
 }
